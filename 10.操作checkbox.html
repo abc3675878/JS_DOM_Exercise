@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .box {
+        width: 500px;
+        height: 500px;
+        border: 2px solid rgb(233, 233, 233);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      input {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="box_content">
+        <input type="checkbox" />1 <input type="checkbox" />2 <input type="checkbox" />3 <input type="checkbox" />4
+        <input type="checkbox" />5 <input type="checkbox" />6 <input type="checkbox" />7 <input type="checkbox" />8
+        <input type="checkbox" />9
+      </div>
+      <div class="box-footer">
+        <button class="all">全選</button>
+        <button class="cancel">取消選取</button>
+        <button class="toggle">反選</button>
+      </div>
+    </div>
+
+    <script>
+      let inputs = document.querySelectorAll('input')
+      let all = document.querySelector('.all')
+      let cancel = document.querySelector('.cancel')
+      let toggle = document.querySelector('.toggle')
+
+      all.addEventListener('click', () => {
+        inputs.forEach((input) => {
+          input.checked = true
+        })
+      })
+
+      cancel.addEventListener('click', () => {
+        inputs.forEach((input) => {
+          input.checked = false
+        })
+      })
+
+      toggle.addEventListener('click', () => {
+        inputs.forEach((input) => {
+          input.checked = !input.checked
+          // if (input.checked) {
+          //   input.checked = false
+          // } else {
+          //   input.checked = true
+          // }
+        })
+      })
+    </script>
+  </body>
+</html>

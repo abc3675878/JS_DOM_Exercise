@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="hide">隱藏</button>
+    <br />
+    <img id="pic" src="https://picsum.photos/500/500/?random=1" />
+
+    <script>
+      let pic = document.getElementById('pic')
+      let hide = document.getElementById('hide')
+
+      hide.addEventListener('click', () => {
+        pic.classList.toggle('hide')
+        if (hide.innerHTML === '隱藏') {
+          hide.innerHTML = '顯示'
+        } else {
+          hide.innerHTML = '隱藏'
+        }
+      })
+    </script>
+  </body>
+</html>

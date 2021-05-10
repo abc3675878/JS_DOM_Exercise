@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      input {
+        outline: none;
+        border: 1px solid black;
+      }
+      span {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <label for="box">您的成績</label>
+      <input type="text" name="box" placeholder="請輸入成績" />
+      <span></span>
+    </div>
+    <script>
+      let input = document.querySelector('input[type=text]')
+      let span = document.querySelector('span')
+
+      input.addEventListener('input', () => {
+        console.log(input.value)
+        if (isNaN(input.value)) {
+          span.innerHTML = '請輸入數字'
+          span.style.color = 'red'
+          input.style.border = '1px solid red'
+        } else if (input.value < 0 || input.value > 100) {
+          span.innerHTML = '請輸入0-100的數字'
+          span.style.color = 'red'
+          input.style.border = '1px solid red'
+        } else if (input.value >= 0 && input.value <= 100) {
+          span.innerHTML = '輸入正確'
+          span.style.color = 'green'
+          input.style.border = '1px solid green'
+        } else if (input.value === '') {
+          console.log('空')
+          span.innerHTML = ''
+          input.style.border = '1px solid black'
+        }
+
+        // if (input.value < 0 || input.value > 100) {
+        //   span.innerHTML = '請輸入0-100的數字'
+        // } else {
+        //   span.innerHTML = ''
+        // }
+      })
+    </script>
+  </body>
+</html>

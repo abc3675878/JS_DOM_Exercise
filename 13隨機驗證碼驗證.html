@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .code {
+        background-color: rgb(240, 240, 240);
+        width: 300px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: blue;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="code">
+        <h1></h1>
+      </div>
+      <input type="text" class="input" placeholder="請輸入驗證碼" />
+      <button class="validateBtn">驗證</button>
+    </div>
+
+    <script>
+      let code = document.querySelector('.code').firstElementChild // h1
+      let input = document.querySelector('.input')
+      let validateBtn = document.querySelector('.validateBtn')
+
+      let codeLength = 4
+      let validateCode = ''
+      let codeArray = [] // 0-9,A-Z
+
+      function random(min, max) {
+        // 取0-36
+        return Math.floor(Math.random() * max)
+      }
+      function createCode() {
+        // 1.在數字和英文中取四個隨機數字
+        // 2.新增陣列包含全部的數字和英文 共36個
+        // 3.設定隨機範圍從0-36
+        // 4.迴圈跑四次將四個值加入新字串中
+        // 5.將字串放到指定元素內
+
+        for (let i = 0; i < 10; i++) {
+          codeArray.push(i)
+        }
+        for (let i = 65; i <= 90; i++) {
+          // String.fromCharCode將數轉乘英文字母
+          codeArray.push(String.fromCharCode(i))
+        }
+
+        // 4.迴圈跑四次將四個值加入新字串中
+        for (let i = 0; i < codeLength; i++) {
+          // 取得四個隨機數
+          let num = random(0, codeArray.length)
+          // 帶入陣列索引找出值並賦予
+          validateCode += codeArray[num]
+        }
+
+        code.innerHTML = validateCode
+      }
+
+      createCode()
+
+      validateBtn.addEventListener('click', () => {
+        if (input.value === validateCode) {
+          alert('驗證正確')
+        } else {
+          alert('驗證錯誤')
+          validateCode = ''
+          createCode()
+        }
+      })
+
+      code.parentNode.addEventListener('click', () => {
+        validateCode = ''
+        createCode()
+      })
+    </script>
+  </body>
+</html>

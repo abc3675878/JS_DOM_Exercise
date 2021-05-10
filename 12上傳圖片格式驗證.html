@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <span>上傳圖片格式驗證: </span>
+      <input id="upload" type="file" />
+    </div>
+
+    <script>
+      let upload = document.getElementById('upload')
+
+      upload.addEventListener('change', () => {
+        let path = upload.value
+        console.log(path)
+
+        // 找出現的最後一個索引
+        let dot = path.lastIndexOf('.')
+        console.log(dot)
+        // substr 會取得指定索引之後的字串 再轉小寫
+        let extension = path.substr(dot + 1).toLowerCase() // +1不包含.
+
+        console.log(extension)
+
+        if (extension === 'jpg' || extension === 'pdf') {
+          alert('上傳格式正確')
+        } else {
+          alert('上傳格式錯誤')
+        }
+      })
+    </script>
+  </body>
+</html>

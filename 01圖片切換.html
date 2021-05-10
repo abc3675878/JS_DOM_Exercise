@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <img id="pic" src="https://picsum.photos/500/500/?random=1" />
+    <button id="prev">上一張</button>
+    <button id="next">下一張</button>
+
+    <script>
+      let pic = document.getElementById('pic')
+      let prev = document.getElementById('prev')
+      let next = document.getElementById('next')
+
+      let minIndex = 1
+      let maxIndex = 5
+      let currentIndex = minIndex
+
+      next.addEventListener('click', () => {
+        currentIndex++
+        if (currentIndex > maxIndex) {
+          currentIndex = minIndex
+        }
+        console.log(currentIndex)
+        pic.setAttribute('src', `https://picsum.photos/500/500/?random=${currentIndex}`)
+      })
+
+      prev.addEventListener('click', () => {
+        currentIndex--
+        if (currentIndex < minIndex) {
+          currentIndex = maxIndex
+        }
+        console.log(currentIndex)
+        pic.setAttribute('src', `https://picsum.photos/500/500/?random=${currentIndex}`)
+      })
+    </script>
+  </body>
+</html>
