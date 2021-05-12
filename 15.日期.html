@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="time">
+        <h1></h1>
+      </div>
+    </div>
+
+    <script>
+      let h1 = document.querySelector('h1')
+
+      function getTime() {
+        const time = new Date()
+        const hour = time.getHours()
+        const minute = time.getMinutes()
+        const second = time.getSeconds()
+        const day = time.getDay()
+        h1.innerHTML = `${hour} : ${minute} : ${second} 星期${day}`
+      }
+      getTime()
+      setInterval(() => {
+        getTime()
+      }, 1000)
+    </script>
+  </body>
+</html>

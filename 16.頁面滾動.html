@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        background: #000;
+        right: 15px;
+        bottom: 15px;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+      }
+    </style>
+    <style>
+      body {
+        height: 3000px;
+        background-color: rgb(245, 245, 245);
+      }
+
+      .box {
+        opacity: 0;
+        transition: all 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">TOP</div>
+
+    <script>
+      let box = document.querySelector('.box')
+      // scrollTop代表被捲動了多少距離
+      window.addEventListener('scroll', () => {
+        let scroll = document.documentElement.scrollTop
+        console.log(scroll)
+
+        if (scroll < 100) {
+          box.style.opacity = '0'
+        } else {
+          box.style.opacity = '1'
+        }
+
+        box.addEventListener('click', () => {
+          let time = setInterval(() => {
+            document.documentElement.scrollTop -= 5
+            if (document.documentElement.scrollTop == 0) {
+              clearInterval(time)
+            }
+          }, 100)
+        })
+      })
+    </script>
+  </body>
+</html>
