@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .box {
+        border: 1px solid rgb(199, 199, 199);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="box_comments">
+        <ul></ul>
+      </div>
+      <div class="box_textarea">
+        <textarea name="" id="" cols="30" rows="10" placeholder="請輸入留言"></textarea>
+        <button class="submit">發佈</button>
+      </div>
+    </div>
+
+    <script>
+      let btn = document.querySelector('.submit')
+      let textarea = document.querySelector('textarea')
+      let ul = document.querySelector('ul')
+      let deleteBtn = document.getElementsByClassName('delete')
+
+      btn.addEventListener('click', () => {
+        let text = textarea.value
+
+        let li = `
+        <li>${text}
+          <button class="delete">刪除</button>
+        </li>`
+
+        ul.innerHTML += li
+        textarea.value = ''
+
+        // 每次的新增都跑一次迴圈更新 length
+        for (i = 0; i < deleteBtn.length; i++) {
+          deleteBtn[i].addEventListener('click', function () {
+            console.log('click')
+            // 獲取父元素並刪除
+            this.parentNode.remove()
+          })
+        }
+      })
+    </script>
+  </body>
+</html>
